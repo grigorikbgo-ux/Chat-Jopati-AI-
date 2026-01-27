@@ -1,10 +1,11 @@
 [app]
-title = Jopati AI
-package.name = jopati
-package.domain = org.grigor
+title = Chat Jopati AI
+package.name = chatjopati
+package.domain = org.test
 source.dir = .
 source.include_exts = py,png,jpg,kv,atlas
-version = 1.0
-requirements = python3,kivy,requests,certifi
+version = 0.1
+requirements = python3,kivy
 orientation = portrait
-android.archs = arm64-v8a, armeabi-v7a
+fullscreen = 0
+android.archs = arm64-v8a
