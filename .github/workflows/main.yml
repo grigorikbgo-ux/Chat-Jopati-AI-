@@ -1,17 +1,11 @@
-name: Build APK
-
-on:
-  push:
-    branches: [ main, master ]
-  pull_request:
-    branches: [ main, master ]
+name: Build
+on: [push, pull_request]
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
       - name: Build with Buildozer
         uses: ArtemShatalin/buildozer-action@v1.6.1
@@ -24,3 +18,4 @@ jobs:
         with:
           name: package
           path: bin/*.apk
+          
