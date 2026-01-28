@@ -1,16 +1,27 @@
-name: Build APK Stable 33
-on: [push]
+name: Build APK
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v4
 
       - name: Build with Buildozer
-        uses: 
+        uses: ArtemShatalin/buildozer-action@v1.6.1
         with:
+          command: buildozer android debug
           buildozer_version: master
-          python_version: 3.10
 
-          
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: package
+          path: bin/*.apk
